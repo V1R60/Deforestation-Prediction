@@ -1,0 +1,187 @@
+/* Main App Container */
+.app {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Map should cover full screen */
+.map-viewer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+/* Floating background image button */
+.image-button {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  background-image: url('./assets/GraphIcon.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+  z-index: 1001;
+}
+
+.image-button:hover {
+  transform: scale(1.1);
+}
+
+/* Panel Container */
+.panel-container {
+  position: absolute;
+  top: 100px;
+  left: 60px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  z-index: 10001;
+}
+
+/* Analysis Panel */
+.analysis-panel {
+  width: 600px;
+  padding: 25px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  line-height: 1.6;
+  position: relative;
+}
+
+/* Prediction Panel Overlay */
+.prediction-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.3); /* translucent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10002;
+}
+
+/* Updated Prediction Panel Box */
+.prediction-panel {
+  width: 600px;
+  padding: 25px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  line-height: 1.6;
+  position: relative;
+  z-index: 10003;
+}
+
+/* Predict Button */
+.predict-button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.predict-button:hover {
+  background-color: #388e3c;
+  transform: scale(1.03);
+}
+
+.predict-button:active {
+  background-color: #2e7d32;
+  transform: scale(0.97);
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-button:hover {
+  color: #d32f2f;
+}
+
+.analysis-panel,
+.prediction-panel {
+  width: 600px;
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.dropdown-wrapper {
+  position: relative;
+}
+
+.dropdown-button {
+  padding: 10px 16px;
+  font-size: 16px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 160px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.dropdown-button:hover {
+  border-color: #999;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 20;
+  list-style: none;
+  padding: 8px 0;
+}
+
+.dropdown-list li {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.dropdown-list li:hover {
+  background-color: #f2f2f2;
+}
