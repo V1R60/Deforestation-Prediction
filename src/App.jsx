@@ -22,7 +22,7 @@ function App() {
         <>
           <MapViewer />
 
-          {/* Floating Buttons: Home + Analysis */}
+          {/* Floating Buttons */}
           {!showAnalysis && !showPrediction && (
             <div className="floating-buttons">
               <button
