@@ -6,34 +6,37 @@
   overflow: hidden;
 }
 
-/* Map should cover full screen */
+/* Map */
 .map-viewer {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  z-index: 0;
-}
-
-/* Floating background image button */
-.image-button {
   position: absolute;
-  top: 100px;
-  left: 20px;
-  width: 50px;
-  height: 50px;
-  background-color: white;
-  background-image: url('./assets/GraphIcon.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
-  z-index: 1001;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 2;
 }
 
-.image-button:hover {
+/* Floating Buttons (Home + Analysis) */
+.floating-buttons {
+  position: fixed;
+  top: 1rem;
+  left: 4rem;
+  display: flex;
+  gap: 0.75rem;
+  z-index: 10005;
+}
+
+.icon-button {
+  background-color: white;
+  border: none;
+  border-radius: 20%;
+  padding: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.icon-button:hover {
   transform: scale(1.1);
 }
 
@@ -45,7 +48,8 @@
   display: flex;
   flex-direction: row;
   gap: 20px;
-  z-index: 10001;
+  z-index: 10;
+  height: 75%;
 }
 
 /* Analysis Panel */
@@ -53,40 +57,28 @@
   width: 600px;
   padding: 25px;
   border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   line-height: 1.6;
   position: relative;
+  z-index: 10;
 }
 
-/* Prediction Panel Overlay */
-.prediction-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.3); /* translucent background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10002;
-}
-
-/* Updated Prediction Panel Box */
+/* Prediction Panel */
 .prediction-panel {
   width: 600px;
   padding: 25px;
   border-radius: 12px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   line-height: 1.6;
   position: relative;
   z-index: 10003;
 }
 
-/* Predict Button */
+/* Prediction Button */
 .predict-button {
   margin-top: 20px;
   padding: 12px 24px;
@@ -129,16 +121,7 @@
   color: #d32f2f;
 }
 
-.analysis-panel,
-.prediction-panel {
-  width: 600px;
-  background-color: rgba(255, 255, 255, 0.92);
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  position: relative;
-}
-
+/* Dropdown */
 .dropdown-wrapper {
   position: relative;
 }
@@ -184,4 +167,10 @@
 
 .dropdown-list li:hover {
   background-color: #f2f2f2;
+}
+
+/* Map container */
+#map {
+  height: 100%;
+  width: 100%;
 }

@@ -1,0 +1,111 @@
+/* Hero section with background video */
+.hero-section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 100vh;
+}
+
+/* Video background */
+.hero-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Dark overlay */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.693);
+  z-index: 1;
+}
+
+/* Map button */
+.map-button {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  padding: 0.75rem;
+  border-radius: 20%;
+  background-color: white;
+  color: black;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+  transition: transform 0.2s ease;
+}
+
+.map-button:hover {
+  transform: scale(1.05);
+}
+
+/* title container */
+.hero-title-container {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  z-index: 20;
+  text-align: left;
+  color: white;
+  font-family: "Lexend Zetta", sans-serif;
+  font-weight: 800;
+  animation: fadeSlideUp 1s ease-out forwards;
+  opacity: 0; /* Start hidden */
+}
+
+/* Animation for title */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* FROM text */
+.from-text {
+  font-size: 20px;
+  margin: 0;
+  line-height: 0.5;
+  margin-bottom: 0;
+}
+
+/* Middle row (PIXELS + TO) */
+.middle-row {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+}
+
+/* Large PIXELS / PROTECTION text */
+.big-text {
+  font-size: 100px;
+  margin: 0;
+  line-height: 1;
+  font-family: "Lexend Zetta", sans-serif;
+  font-weight: 800;
+}
+
+/* TO text */
+.to-text {
+  font-size: 20px;
+  line-height: 1;
+  vertical-align: top;
+  display: inline-block;
+  margin-top: 10px;
+}
