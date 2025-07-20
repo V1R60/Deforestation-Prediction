@@ -26,6 +26,15 @@ function HeroSection({ onMapClick, showMap }) {
               <span className="to-text">TO</span>
             </div>
             <h1 className="big-text">PROTECTION</h1>
+
+            {/* Description */}
+            <p className="hero-description">
+              This tool uses satellite imagery to track deforestation, and recovery trends across time. It also has predictive features 
+              that assist illustrate potential future patterns based on past data and analysis.
+              <br /><br />
+              <strong>Disclaimer:</strong> Predictions are data-driven estimates and should not be considered as definitive outcomes.
+              Environmental changes are influenced by numerous unpredictable factors.
+            </p>
           </div>
 
           {/* Map Button */}
