@@ -21,50 +21,42 @@ function AnalysisPanel({ onClose, onPredict }) {
     setDropdownOpen(false);
   };
 
-  // Dummy Sierra Madre loss/recovery data from 2000–2024
+  // Dummy data
   const dummyDataByYear = {};
   for (let year = 2000; year <= 2024; year++) {
     dummyDataByYear[year] = {
-      loss: [
-        Math.floor(Math.random() * 100 + 100), // Region 1
-        Math.floor(Math.random() * 80 + 90),    // Region 2
-        Math.floor(Math.random() * 60 + 70)     // Region 3
-      ],
-      recovery: [
-        Math.floor(Math.random() * 40 + 30),    // Region 1
-        Math.floor(Math.random() * 35 + 25),    // Region 2
-        Math.floor(Math.random() * 30 + 20)     // Region 3
-      ]
+      loss: Math.floor(Math.random() * 100 + 100),
+      recovery: Math.floor(Math.random() * 40 + 30)
     };
   }
 
   const chartData = selectedYear && dummyDataByYear[selectedYear]
     ? {
-        labels: ['Region 1', 'Region 2', 'Region 3'],
+        labels: ['Sierra Madre Region'],
         datasets: [
           {
             label: 'Deforestation Loss (hectares)',
-            data: dummyDataByYear[selectedYear].loss,
+            data: [dummyDataByYear[selectedYear].loss],
             backgroundColor: '#e57373',
           },
           {
             label: 'Forest Recovery (hectares)',
-            data: dummyDataByYear[selectedYear].recovery,
+            data: [dummyDataByYear[selectedYear].recovery],
             backgroundColor: '#81c784',
           }
         ]
       }
     : {
-        labels: ['Region 1', 'Region 2', 'Region 3'],
+        labels: ['Sierra Madre Region'],
         datasets: [
           {
             label: 'Deforestation Loss (hectares)',
-            data: [0, 0, 0],
+            data: [0],
             backgroundColor: '#e57373',
           },
           {
             label: 'Forest Recovery (hectares)',
-            data: [0, 0, 0],
+            data: [0],
             backgroundColor: '#81c784',
           }
         ]
@@ -99,11 +91,13 @@ function AnalysisPanel({ onClose, onPredict }) {
 
       <Bar data={chartData} />
 
-      <div style={{ display: 'flex', justifyContent: 'left' }}>
-        <button className="predict-button" onClick={onPredict}>
-          Predict
-        </button>
-      </div>
+      {selectedYear === 2024 && (
+        <div style={{ display: 'flex', justifyContent: 'left' }}>
+          <button className="predict-button" onClick={onPredict}>
+            Predict
+          </button>
+        </div>
+      )}
     </div>
   );
 }
