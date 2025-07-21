@@ -12,16 +12,14 @@ import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-function AnalysisPanel({ onClose, onPredict }) {
+function AnalysisPanel({ onClose, onPredict, onYearChange, selectedYear }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedYear, setSelectedYear] = useState(null);
 
   const handleYearSelect = (year) => {
-    setSelectedYear(year);
+    onYearChange(year); // Pass selected year to App
     setDropdownOpen(false);
   };
 
-  // Dummy data
   const dummyDataByYear = {};
   for (let year = 2000; year <= 2024; year++) {
     dummyDataByYear[year] = {
@@ -79,7 +77,7 @@ function AnalysisPanel({ onClose, onPredict }) {
 
           {dropdownOpen && (
             <ul className="dropdown-list">
-              {Array.from({ length: 2025 - 2000 }, (_, i) => 2000 + i).map((year) => (
+              {Array.from({ length: 2024 - 2015 + 1 }, (_, i) => 2015 + i).map((year) => (
                 <li key={year} onClick={() => handleYearSelect(year)}>
                   {year}
                 </li>

@@ -3,61 +3,60 @@ import HeroSection from './components/HeroSection';
 import MapViewer from './components/MapViewer';
 import AnalysisPanel from './components/AnalysisPanel';
 import PredictionPanel from './components/PredictionPanel';
-import { Home, BarChart2 } from 'lucide-react';
 import './App.css';
 
 function App() {
   const [showMap, setShowMap] = useState(false);
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [showPrediction, setShowPrediction] = useState(false);
+  const [selectedYear, setSelectedYear] = useState(null);
+
+  const handleYearChange = (year) => {
+    setSelectedYear(year);
+  };
+
+  const handleMapClick = () => {
+    setShowMap(true);
+    setShowAnalysis(false); // Reset when re-entering map
+    setShowPrediction(false);
+  };
+
+  const handleAnalysisClick = () => {
+    setShowAnalysis(true);
+    setShowPrediction(false); // Only one panel at a time
+  };
 
   return (
-    <div className="app">
-      <HeroSection
-        onMapClick={() => setShowMap(true)}
-        showMap={showMap}
-      />
+    <div className="App">
+      <HeroSection onMapClick={handleMapClick} showMap={showMap} />
 
       {showMap && (
         <>
-          <MapViewer />
+          <MapViewer
+            onHomeClick={() => {
+              setShowMap(false);
+              setShowAnalysis(false);
+              setShowPrediction(false);
+            }}
+            onAnalysisClick={handleAnalysisClick}
+          />
 
-          {/* Floating Buttons */}
-          {!showAnalysis && !showPrediction && (
-            <div className="floating-buttons">
-              <button
-                className="icon-button"
-                onClick={() => {
-                  setShowMap(false);
-                  setShowAnalysis(false);
-                  setShowPrediction(false);
-                }}
-                title="Back to Home"
-              >
-                <Home size={24} />
-              </button>
-
-              <button
-                className="icon-button"
-                onClick={() => setShowAnalysis(true)}
-                title="Open Analysis Panel"
-              >
-                <BarChart2 size={24} />
-              </button>
-            </div>
-          )}
-
-          {/* Analysis and Prediction Panels */}
           {(showAnalysis || showPrediction) && (
             <div className="panel-container">
               {showAnalysis && (
                 <AnalysisPanel
                   onClose={() => setShowAnalysis(false)}
                   onPredict={() => setShowPrediction(true)}
+                  onYearChange={handleYearChange}
+                  selectedYear={selectedYear}
                 />
               )}
+
               {showPrediction && (
-                <PredictionPanel onClose={() => setShowPrediction(false)} />
+                <PredictionPanel
+                  onClose={() => setShowPrediction(false)}
+                  selectedYear={selectedYear}
+                />
               )}
             </div>
           )}
